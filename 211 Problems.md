@@ -60,6 +60,30 @@ So we have the base case of 1, where 0! or 1! would return one. We then check if
 
 Once we have this fuction ready, we can use the logic of finding the number of lattice paths. The # of lattice paths from point (0,0) to (x,y) which in this case is (5,5) will be equal to `x+y choose x` or 10 choose 5. This translates to `10!/(5!(10-5)!)`. 
 
+This can also be solved using the coordinates of the boxes and adding them, kind of like in pascals triangle.
+
+**Code provided by NYC#5709**
+```cpp
+#include <iostream>
+using namespace std;
+
+int path(int i, int j)
+{
+    static int memo[5][5] = {0};
+    if (i == 0 || j == 0) //Starts at top left corner
+        return 1;
+    if (memo[i][j] != 0)
+        return memo[i][j];
+    return memo[i][j] = path(i - 1, j) + path(i, j - 1);
+}
+
+int main()
+{
+    cout << path(4, 4);
+    return 0;
+}
+```
+
 ## Sheep Problem
 
 ![[Pasted image 20230522050000.png]]
@@ -142,6 +166,21 @@ int main()
 {
     cout << "factorial: " << factorial(3);
     return 0;
+}
+```
+
+## Fibonacci Memoization (Recursively)
+```cpp
+int fibonacci(int n){
+    static int memo[100] = {};
+    
+    if (n < 2) {
+	    return 1;
+    }
+    if (memo[n] != 0){
+	    return memo[n];
+	}
+    return memo[n] = fibonacci(n-1) + fibonacci(n - 2);
 }
 ```
 
