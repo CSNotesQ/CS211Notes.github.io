@@ -1157,7 +1157,7 @@ cout << "Dynamic String: " << *dynamicString << endl;
 delete dynamicString;
 ```
 
-3. Dynamic Allocation of a 2D Array of Booleans:
+3. Dynamic Allocation of a 2D Array of Integers:
 ```cpp
 int rows = 3;
 int cols = 4;
